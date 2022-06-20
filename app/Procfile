@@ -1,0 +1,7 @@
+web: bundle exec rails s -p $PORT
+release: bin/rake db:migrate db:seed
+
+## This will first migrate your tables and seed the pre-made data.
+## Then it will run your Rails server for your websites use for the general public.
+## My release has db:seed:replant because I have since had to redeploy when making updates but didn’t want to lose the data made by outside users.
+
