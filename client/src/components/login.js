@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react'
-import ProductPage from './ProductPage'
+// import ProductPage from './ProductPage'
 import NavBar from './NavBar'
 
 
