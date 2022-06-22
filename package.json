@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/IlyaMilya/Real-MeatHead-Commerce/issues"
   },
-  "homepage": "https://github.com/IlyaMilya/Real-MeatHead-Commerce#readme"
+  "homepage": "https://github.com/IlyaMilya/Real-MeatHead-Commerce#readme",
+  "dependencies": {
+    "react-router-dom": "^6.3.0"
+  }
 }

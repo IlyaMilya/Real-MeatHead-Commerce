@@ -1,14 +1,16 @@
-import logo from './logo.svg';
-import Login from './components/login' 
 import './App.css';
+import React from "react";
+import {Routes, Route} from "react-router-dom";
+import Login from './components/Login';
+import ProductPage from './components/ProductPage';
 
 function App() {
   return (
-   
-   
-   <Login />
+   <Routes>
+    <Route exact path="/" element={<ProductPage />} />
+    <Route exact path="/login" element={<Login />} />
 
-  
+   </Routes>
   )
 }
 
