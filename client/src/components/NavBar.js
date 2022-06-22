@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from "react-router-dom";
 
 const settings = ['Login','Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -43,7 +44,9 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
+           <Link to={"/"}>
            MeatHead Commerce
+           </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>

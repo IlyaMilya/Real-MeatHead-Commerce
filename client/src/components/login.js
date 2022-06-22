@@ -1,7 +1,6 @@
 
 import React, {useState, useEffect} from 'react'
 // import ProductPage from './ProductPage'
-import NavBar from './NavBar'
 
 
 function Login() {
@@ -104,7 +103,6 @@ function Login() {
           // </div>
           // </div>
           <>
-          <NavBar />
           {/* <ProductPage /> */}
           </>
         );

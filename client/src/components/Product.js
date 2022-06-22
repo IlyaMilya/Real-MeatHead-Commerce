@@ -13,6 +13,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ReviewsIcon from '@mui/icons-material/Reviews';
+import { Link } from "react-router-dom";
+import Review from "./ReviewList"
 
 
 function Product({id, category, name, price, image, company}) {
@@ -33,13 +35,13 @@ function Product({id, category, name, price, image, company}) {
 
   return (
    
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 818 }}>
       <CardHeader title={name}/>
       <CardMedia
         component= "img"
         height="194"
         image={image}
-        alt="Paella dish"
+        alt="fitness product"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -57,7 +59,9 @@ function Product({id, category, name, price, image, company}) {
           <ShoppingCartIcon />
         </IconButton>
         <IconButton aria-label="review product">
-          <ReviewsIcon />
+          <Link to={`/products/${id}`} >
+            <ReviewsIcon />
+          </Link>
         </IconButton>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
