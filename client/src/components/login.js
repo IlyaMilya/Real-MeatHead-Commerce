@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react'
-import ProductPage from './productPage'
+import ProductPage from './ProductPage'
 
 
     function Login() 
@@ -79,7 +79,7 @@ import ProductPage from './productPage'
               </div>
               <div className="button-container">
                 <input type="submit" value="Login"/>
-                <a href="http://localhost:4000/login"> Sign in </a>
+                <a href="http://localhost:4000/signup"> Sign Up </a>
               </div>
             </form>
           </div>
