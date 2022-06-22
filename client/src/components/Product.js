@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ReviewsIcon from '@mui/icons-material/Reviews';
 
 
 function Product({id, category, name, price, image, company}) {
@@ -51,6 +53,12 @@ function Product({id, category, name, price, image, company}) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
+        <IconButton aria-label="add to shopping cart">
+          <ShoppingCartIcon />
+        </IconButton>
+        <IconButton aria-label="review product">
+          <ReviewsIcon />
+        </IconButton>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
