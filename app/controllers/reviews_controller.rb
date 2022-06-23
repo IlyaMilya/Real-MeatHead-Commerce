@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.permit(:description)
+        params.permit(:description, :rating, :user_id, :product_id)
     end
 
     def review_not_found
