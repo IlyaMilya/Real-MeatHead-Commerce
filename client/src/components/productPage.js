@@ -8,7 +8,8 @@ function ProductPage() {
   useEffect(() => {
     fetch("/products")
     .then(response => response.json())
-    .then(products => setProducts(products))
+    .then(products => setProducts(() => products))
+    .catch(error => console.log(error))
   },[])
 
   return (

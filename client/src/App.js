@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import {Routes, Route, useParams} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import Login from './components/Login';
 import ProductPage from './components/ProductPage';
 import ReviewList from './components/ReviewList';
