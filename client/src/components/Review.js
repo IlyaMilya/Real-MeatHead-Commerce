@@ -24,9 +24,6 @@ function Review({review}) {
         <Container maxWidth="sm">
             <Card sx={{ maxWidth: 818 }}>
                 <CardContent>
-                    <Typography variant="body2" color="text.secondary">
-                        {review.description}
-                    </Typography>
                     <Box sx={{'& > legend': { mt: 2 },}}>
                         <br></br>
                         <Rating
@@ -35,8 +32,12 @@ function Review({review}) {
                             onChange={(event, newValue) => {
                             setValue(newValue);
                             }}
-                        />
+                    />
+                    <br></br>
                     </Box>
+                    <Typography variant="body2" color="text.secondary">
+                        {review.description}
+                    </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
                     <IconButton aria-label="edit comment">

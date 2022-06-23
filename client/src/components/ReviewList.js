@@ -16,6 +16,9 @@ function ReviewList() {
   let {id} = useParams();
   const [products, setProducts] = useState({reviews: [{description: '', rating: '', user_id: '', product_id:''}]});
   const [description, setDescription] = useState("");
+  const [rating, setRating] = useState("")
+  const [userId, setUserId] = useState("1")
+  const [productId, setProductId] = useState("1")
   const [reviews, setReviews] = useState([]);
 
   // useEffect(() => {
@@ -39,24 +42,35 @@ function ReviewList() {
   const reviewItems = products.reviews.map((review) => {
     return <Review key={review.id} review={review} />
   })
+
+  function handleAddReview(newReview) {
+    setReviews((reviews) => [...reviews, newReview]);
+  }
 //Form submission to create a new review
   function handleSubmit(e) {
     e.preventDefault()
     const formData = {
-      description
+      description,
+      rating: Number(rating),
+      user_id: Number(userId),
+      product_id: Number(productId)
     };
     fetch("/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
-    }).then((r) => {
-        r.json().then((review) => {
-          setDescription("");
-          handleAddReview(review);
-        });
-      })
+      body: JSON.stringify(formData),
+    })
+    .then((r) => {
+      r.json().then((review) => {
+        setDescription("");
+        setRating("");
+        setUserId("");
+        setProductId("");
+        handleAddReview(review);
+      });
+    })
 
     // if (description) {
     //   console.log(description)

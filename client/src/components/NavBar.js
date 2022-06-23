@@ -48,6 +48,7 @@ function NavBar() {
           >
            <Link to={"/"}>
            MeatHead Commerce
+           </Link>
 
           </Typography >
 
