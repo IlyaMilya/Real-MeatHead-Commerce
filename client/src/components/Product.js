@@ -39,7 +39,7 @@ function Product({id, category, name, price, image, company}) {
       <CardHeader title={name}/>
       <CardMedia
         component= "img"
-        height="194"
+        height="700"
         image={image}
         alt="fitness product"
       />

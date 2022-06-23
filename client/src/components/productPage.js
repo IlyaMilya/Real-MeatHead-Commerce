@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import ProductList from "./ProductList";
 
-function ProductPage() {
+
+function ProductPage({userdata}) {
 
   const [products, setProducts] = useState([]);
 
@@ -13,9 +14,13 @@ function ProductPage() {
   },[])
 
   return (
-    <>
-      <ProductList products={products}/>
-    </>
+
+    <main>
+      {/* <Search search={search} onSearch={setSearch}/> */}
+      
+      <ProductList products={products} userdata= {userdata}/>
+    </main>
+
   );
 }
 
