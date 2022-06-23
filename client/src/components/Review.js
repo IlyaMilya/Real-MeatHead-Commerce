@@ -18,6 +18,13 @@ function Review({review}) {
 
     const [value, setValue] = React.useState();
 
+    // function handleDeleteClick() {
+    //     fetch(`/reviews/${id}`, )
+    //         method: "DELETE",
+    //     })
+
+    // }
+
   return (
     <>
         <CssBaseline />
@@ -54,3 +61,5 @@ function Review({review}) {
 }
 
 export default Review;
+
+// onClick={handleDeleteClick}
