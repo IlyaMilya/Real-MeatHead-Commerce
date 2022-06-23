@@ -33,11 +33,11 @@ function Product({id, category, name, price, image, company}) {
 
   return (
    
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 818 }}>
       <CardHeader title={name}/>
       <CardMedia
         component= "img"
-        height="194"
+        height="700"
         image={image}
         alt="Paella dish"
       />

@@ -22,12 +22,12 @@ import ProductPage from './ProductPage'
           pass: "invalid password"
         };
         /*getting user from backend */
-        // const getUser = async () => {
-        //   const req = await fetch(`users/${gettingUsername}`)
-        //   const res = await req.json()
-        //   setCurrentUser(res)
-          
-        // }
+         
+        const getUser = async () => {
+           const req = await fetch(`users/${gettingUsername}`)
+           const res = await req.json()
+           setCurrentUser(res)
+          }
         
         const handleSubmit = (event) => {
           //Prevent page reload
@@ -85,22 +85,28 @@ import ProductPage from './ProductPage'
           </div>
         );
       
-         useEffect = (async()=>{
+        
+          const request = async () => {
           const req = await fetch(`users/${gettingUsername}`)
           const res = await req.json()
           setCurrentUser(res)
-      
-         }, [] )
+          console.log(res)
+          }
+
+          useEffect (() => { 
+            request()
+          },[] )
       
         return (
           <div className="login-page">
           <div className="app">
             <div className="login-form">
               <div className="title"></div>
-              {}
               {isSubmitted ? <ProductPage userdata = {userInfo} /> : renderForm}
             </div>
           </div>
           </div>
         );
         }
+
+        export default Login;
