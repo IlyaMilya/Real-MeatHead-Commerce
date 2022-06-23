@@ -17,8 +17,8 @@ function ReviewList() {
   const [products, setProducts] = useState({reviews: [{description: '', rating: '', user_id: '', product_id:''}]});
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState("")
-  const [userId, setUserId] = useState("1")
-  const [productId, setProductId] = useState("1")
+  const [userId, setUserId] = useState("")
+  const [productId, setProductId] = useState("")
   const [reviews, setReviews] = useState([]);
 
   // useEffect(() => {
@@ -29,15 +29,13 @@ function ReviewList() {
   // },[])
 
 //Fetching product.reviews to render
-  const getProductReviews = () => {
+  useEffect(() => {
     fetch(`/products/${id}`)
     .then(response => response.json())
     .then(products => setProducts(() => products))
     .catch(error => console.log(error))
-  }
-  useEffect(() => {
-    getProductReviews();
   },[]);
+
 //Mapping thru all reviews in product.reviews to render
   const reviewItems = products.reviews.map((review) => {
     return <Review key={review.id} review={review} />
@@ -63,19 +61,18 @@ function ReviewList() {
       body: JSON.stringify(formData),
     })
     .then((r) => {
-      r.json().then((review) => {
-        setDescription("");
-        setRating("");
-        setUserId("");
-        setProductId("");
-        handleAddReview(review);
-      });
+      if (r.ok) {
+        r.json().then((review) => {
+          setDescription("");
+          setRating("");
+          setUserId("");
+          setProductId("");
+          handleAddReview(review);
+        });
+      }
     })
-
-    // if (description) {
-    //   console.log(description)
-    // }
   }
+
   return (
     <>
       <br></br>
