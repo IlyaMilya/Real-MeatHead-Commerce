@@ -3,6 +3,8 @@ import React from "react";
 import {Routes, Route} from "react-router-dom";
 import Login from './components/Login';
 import ProductPage from './components/ProductPage';
+import ReviewList from './components/ReviewList';
+
 import Signup from './components/Signup'
 import Navbar from './components/NavBar'
 
@@ -18,6 +20,7 @@ function App() {
 
    </Routes>
    </div>
+
   )
 }
 
