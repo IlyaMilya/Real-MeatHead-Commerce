@@ -23,7 +23,7 @@ u2 = User.create(fullname: "Elmo", email: "sesamestreet@gmail.com", username:"ca
 
 puts "🌱 Seeding products..."
 
-p1 = Product.create(category: "Strength", name: "HAGOO 400LBS Power Tower Pull Up Station Dumbbell Bench 6 Adjustable", company: "HAGOO", price: 250, image: "https://content.toolots.com/media/catalog/product/cache/1/small_image/38x50/fd2c6820d7d512d5e7e5a15d4f852118/e/1/e1i1vkpf8_5851511.jpg")
+p1 = Product.create(category: "Strength", name: "Sportsroyals Power Tower Dip Station Pull Up Bar for Home Gym Strength Training Workout Equipment, 400LBS.", company: "SportsRoyal", price: 209, image: "https://m.media-amazon.com/images/I/61PzvSVJtzS._AC_SX569_.jpg")
 p2 = Product.create(category: "Strength", name: "71.5LBS Adjustable dumbbell weight set (pair)", company: "Ativafit", price: 500, image: "https://m.media-amazon.com/images/I/51RpiX2zCkL._AC_SL1000_.jpg")
 p3 = Product.create(category: "Preworkout", name: "Pulse Natural Pre-Workout", company: "Legion", price: 24, image: "https://legionathletics.com/wp-content/uploads/2020/12/Pulse-Fruit-Punch-Front-1000x1000-1.png")
 

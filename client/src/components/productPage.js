@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from "react";
 import ProductList from "./ProductList";
-import NavBar from "./NavBar";
 // import Search from "./Search";
 
-function ProductPage() {
+function ProductPage({userdata}) {
 
   const [products, setProducts] = useState([]);
 //   const [search, setSearch] = useState("");
@@ -31,8 +30,8 @@ function ProductPage() {
   return (
     <main>
       {/* <Search search={search} onSearch={setSearch}/> */}
-      <NavBar />
-      <ProductList products={products}/>
+      
+      <ProductList products={products} userdata= {userdata}/>
     </main>
   );
 }
