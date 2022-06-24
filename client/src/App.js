@@ -13,19 +13,21 @@ function App() {
 
 
 
-  const authorization = () => {
-    const request = async () => {
-      const req = await fetch('/auth')
-      const res = await req.json()
-      setUser(res)
-      console.log(user)
-    }
-  }
+  // const authorization = async () => {
+ 
+  //     const req = await fetch('/auth')
+  //     const res = await req.json()
+  //     setUser(res)
+  //     console.log(user)
+  //   } 
+    
 
-  useEffect(()=>{ 
-  authorization()
 
-  },[])
+  // useEffect(()=>{ 
+    
+  // authorization()
+
+  // },[])
 
 
 
