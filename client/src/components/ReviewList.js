@@ -16,7 +16,7 @@ function ReviewList() {
   let {id} = useParams();
   const [products, setProducts] = useState({reviews: [{description: '', rating: '', user_id: '', product_id:''}]});
   const [description, setDescription] = useState("");
-  const [rating, setRating] = useState("")
+  const [rating, setRating] = useState([])
   const [userId, setUserId] = useState("")
   const [productId, setProductId] = useState("")
   const [reviews, setReviews] = useState([]);
@@ -48,7 +48,7 @@ function ReviewList() {
   function handleSubmit(e) {
     e.preventDefault()
     const formData = {
-      description,
+      description: description,
       rating: Number(rating),
       user_id: Number(userId),
       product_id: Number(productId)
