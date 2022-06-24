@@ -18,8 +18,8 @@ puts "🌱 Seeding start..."
 
 puts "🌱 Seeding users..."
 
-u1 = User.create(fullname: "Johnny Cash", email: "fruitpunch@aol.com", username:"johnnyCash32", password:"getVaporized", image: "https://i.discogs.com/9HfmXDCsEysBIWxEmkTsZdXy7Sg4SQT59WGDnl8W7Ks/rs:fit/g:sm/q:90/h:652/w:506/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEzNTk0/Ni0xNjE0MTkzOTc2/LTE4MDMuanBlZw.jpeg")
-u2 = User.create(fullname: "Elmo", email: "sesamestreet@gmail.com", username:"catchMeOutside", password:"password", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXEKCdM26HUnC8py4a4T8JY0sxGDLoZF30sA&usqp=CAU")
+u1 = User.create(fullname: "Johnny Cash", email: "fruitpunch@aol.com", username:"johnnyCash32", password_digest:"getVaporized", image: "https://i.discogs.com/9HfmXDCsEysBIWxEmkTsZdXy7Sg4SQT59WGDnl8W7Ks/rs:fit/g:sm/q:90/h:652/w:506/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEzNTk0/Ni0xNjE0MTkzOTc2/LTE4MDMuanBlZw.jpeg")
+u2 = User.create(fullname: "Elmo", email: "sesamestreet@gmail.com", username:"catchMeOutside", password_digest:"password", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXEKCdM26HUnC8py4a4T8JY0sxGDLoZF30sA&usqp=CAU")
 
 puts "🌱 Seeding products..."
 

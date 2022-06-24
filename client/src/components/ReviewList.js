@@ -13,7 +13,9 @@ import TextField from '@mui/material/TextField';
 
 function ReviewList() {
 
+
 let {id} = useParams();
+
 
 const [products, setProducts] = useState({reviews: [{description: '', rating: '', user_id: '', product_id:''}]});
 const [description, setDescription] = useState("");
@@ -66,6 +68,7 @@ const reviewItems = reviews.map((review) => {
 })
 
 //Form submission to create a new review
+
 function handleSubmit(e) {
   e.preventDefault()
   fetch("/reviews", {
@@ -87,6 +90,7 @@ function handleSubmit(e) {
       });
   })
 }
+
 
 
   return (

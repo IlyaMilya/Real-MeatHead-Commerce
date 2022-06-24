@@ -1,117 +1,57 @@
 
-import React, {useState, useEffect} from 'react'
+import { TextInput, Checkbox, Button, Group, Box, PasswordInput, JsonInput } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import {useNavigate} from 'react-router-dom'
 
 
-import ProductPage from './ProductPage'
+function Login() {
 
+  const form = useForm({
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    // validate: {
+    //   email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+    // },
+  });
+ 
+const navy = useNavigate()
 
-
-    function Login() 
-    {
-        let gettingUsername = "";
-        console.log(gettingUsername)
-        const [currentUser, setCurrentUser] = useState('')
-        const [errorMessages, setErrorMessages] = useState({});
-        const [isSubmitted, setIsSubmitted] = useState(false);
-        const [userInfo, setUserInfo] = useState({});
-      
-      
-        // User Login info
-        
-      
-      
-        const errors = {
-          uname: "invalid username",
-          pass: "invalid password"
-        };
-        /*getting user from backend */
-         
-        const getUser = async () => {
-           const req = await fetch(`users/${gettingUsername}`)
-           const res = await req.json()
-           setCurrentUser(res)
-          }
-        
-        const handleSubmit = (event) => {
-          //Prevent page reload
-          event.preventDefault();
-      
-          let { uname, pass } = document.forms[0];
-      
-          gettingUsername = uname.value
-      
-          // Find user login info
-          const userData = currentUser.find((user) => user.username === uname.value);
-            console.log(userData)
-            setUserInfo(userData) 
-          // Compare user info
-          if (userData) {
-            if (userData.password !== pass.value) {
-              // Invalid password
-              setErrorMessages({ name: "pass", message: errors.pass });
-                } else {
-              setIsSubmitted(true);
-                }
-              } else {
-            // Username not found
-                  setErrorMessages({ name: "uname", message: errors.uname });
-              }
-                           };
-      
-        // Generate JSX code for error message
-        const renderErrorMessage = (name) =>
-          name === errorMessages.name && (
-            <div className="error">{errorMessages.message}</div>
-          );
-      
-        
-      
-        // JSX code for login form
-        const renderForm = (
-          <div className="form">
-            <form onSubmit={handleSubmit}>
-              <div className="input-container">
-                <label>Username </label>
-                <input type="text" name="uname" required />
-                {renderErrorMessage("uname")}
-              </div>
-              <div className="input-container">
-                <label>Password </label>
-                <input type="password" name="pass" required />
-                {renderErrorMessage("pass")}
-              </div>
-              <div className="button-container">
-                <input type="submit" value="Login"/>
-                <a href="http://localhost:4000/signup"> Sign Up </a>
-              </div>
-            </form>
-          </div>
-        );
-      
-        
-          const request = async () => {
-          const req = await fetch(`users/${gettingUsername}`)
-          const res = await req.json()
-          setCurrentUser(res)
-          console.log(res)
-          }
-
-          useEffect (() => { 
-            request()
-          },[] )
-      
-        return (
-
-          <div className="login-page">
-          <div className="app">
-            <div className="login-form">
-              <div className="title"></div>
-              {isSubmitted ? <ProductPage userdata = {userInfo} /> : renderForm}
-            </div>
-          </div>
-          </div>
-
-        );
-        }
-
-        export default Login;
+const handleSubmit = form.onSubmit((values) =>{
+  fetch('/login',{
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(values),
+  })
+  .then((res) => res.json()).then((data)=>navy('/productPage'))
+})
+  
+  return (
+    <Box sx={{ maxWidth: 300 }} mx="auto">
+      <form onSubmit={handleSubmit}>
+        <TextInput
+          required
+          label="Username"
+          placeholder="username"
+          {...form.getInputProps('username')}
+        />
+        <PasswordInput
+          required
+          label="Password"
+          placeholder="password"
+          {...form.getInputProps('password')}
+        />
+        <Checkbox
+          mt="md"
+          label="I agree to sell my privacy"
+          {...form.getInputProps('termsOfService', { type: 'checkbox' })}
+        />
+        <Group position="right" mt="md">
+          <Button type="submit">Log in</Button>
+        </Group>
+      </form>
+    </Box>
+  );
+}
+export default Login;

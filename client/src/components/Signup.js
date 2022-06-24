@@ -37,18 +37,17 @@ function Signup() {
 
 
     fetch('/users', {
-            method: 'POST', 
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                fullname: fname.value,
-                email: imail.value,
-                username: uname.value,
-                password: pass.value,
-                image: img.value,
-            }
-            ) },  
-            )
+      method: 'POST', 
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+          fullname: fname.value,
+          email: imail.value,
+          username: uname.value,
+          password: pass.value,
+          image: img.value,})},)
+          .then((res)=>res.json()).then((data)=>{console.log(data)})
             setIsSubmitted(true)
+            
   }
 
   // JSX code for login form

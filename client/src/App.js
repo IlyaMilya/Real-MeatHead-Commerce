@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Routes, Route} from "react-router-dom";
 import Login from './components/Login';
 import ProductPage from './components/ProductPage';
@@ -9,6 +9,32 @@ import Navbar from './components/NavBar'
 import ReviewEdit from './components/ReviewEdit';
 
 function App() {
+
+  const [user, setUser] = useState(false) 
+
+
+
+  // const authorization = async () => {
+ 
+  //     const req = await fetch('/auth')
+  //     const res = await req.json()
+  //     setUser(res)
+  //     console.log(user)
+  //   } 
+    
+
+
+  // useEffect(()=>{ 
+    
+  // authorization()
+
+  // },[])
+
+
+
+  
+
+  
   return (
     <>
       <Navbar />
@@ -23,5 +49,6 @@ function App() {
 
   )
 }
+
 
 export default App;

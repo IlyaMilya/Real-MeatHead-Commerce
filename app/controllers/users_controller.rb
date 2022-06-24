@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:fullname, :email, :username, :password, :image)
+        params.permit(:fullname, :email, :username, :password, :password_confirmation, :image)
     end
 
     def user_not_found
