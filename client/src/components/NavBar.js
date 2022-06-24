@@ -46,7 +46,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-           <Link to={"/"}>
+           <Link to={"/productPage"}>
            MeatHead Commerce
            </Link>
 
