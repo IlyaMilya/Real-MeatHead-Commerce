@@ -16,8 +16,6 @@ function ProductPage({userdata}) {
   return (
 
     <main>
-      {/* <Search search={search} onSearch={setSearch}/> */}
-      
       <ProductList products={products} userdata= {userdata}/>
     </main>
 

@@ -3,80 +3,96 @@ import {useParams} from 'react-router-dom';
 import Review from './Review';
 //MATERIAL UI IMPORTS
 import AddCommentIcon from '@mui/icons-material/AddComment';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
+// import ReviewEdit from './ReviewEdit';
 
 function ReviewList() {
 
-  let {id} = useParams();
-  const [products, setProducts] = useState({reviews: [{description: '', rating: '', user_id: '', product_id:''}]});
-  const [description, setDescription] = useState("");
-  const [rating, setRating] = useState("")
-  const [userId, setUserId] = useState("")
-  const [productId, setProductId] = useState("")
-  const [reviews, setReviews] = useState([]);
+let {id} = useParams();
 
-  // useEffect(() => {
-  //   fetch("/reviews")
-  //   .then(response => response.json())
-  //   .then(reviews => setReviews(() => reviews))
-  //   .catch(error => console.log(error))
-  // },[])
+const [products, setProducts] = useState({reviews: [{description: '', rating: '', user_id: '', product_id:''}]});
+const [description, setDescription] = useState("");
+const [rating, setRating] = useState("")
+const [userId, setUserId] = useState("1")
+const [productId, setProductId] = useState("1")
+const [reviews, setReviews] = useState([])
+// const [description, setDescription] = useState({reviews: [{description:""}]});
+// const [rating, setRating] = useState({reviews: [{rating:""}]})
+// const [userId, setUserId] = useState({reviews: [{user_id:""}]})
+// const [productId, setProductId] = useState({reviews: [{product_id:""}]})
+// const [reviews, setReviews] = useState({reviews: ""})
+
+
+// useEffect(() => {
+//   fetch("/reviews")
+//   .then(response => response.json())
+//   .then(reviews => setReviews(() => reviews))
+//   .catch(error => console.log(error))
+// },[])
 
 //Fetching product.reviews to render
-  useEffect(() => {
-    fetch(`/products/${id}`)
-    .then(response => response.json())
-    .then(products => setProducts(() => products))
-    .catch(error => console.log(error))
-  },[]);
+useEffect(() => {
+  fetch(`/products/${id}`)
+  .then(response => response.json())
+  .then(products => {
+    setProducts(products)
+    setReviews(products.reviews)
+  })
+  .catch(error => console.log(error))
+},[]);
+
+//function to edit product.reviews to render
+// function 
+
+//function to delete reviews
+function handleDelete(id){
+  setReviews((reviews) => 
+  reviews.filter((review)=> review.id !== id)
+  )
+    fetch(`/reviews/${id}`, {
+      method: "DELETE",
+        })
+
+}
 
 //Mapping thru all reviews in product.reviews to render
-  const reviewItems = products.reviews.map((review) => {
-    return <Review key={review.id} review={review} />
-  })
+const reviewItems = reviews.map((review) => {
+  return <Review key={review.id} review={review} handleDelete={handleDelete}/>
+})
 
-  function handleAddReview(newReview) {
-    setReviews((reviews) => [...reviews, newReview]);
-  }
 //Form submission to create a new review
-  function handleSubmit(e) {
-    e.preventDefault()
-    const formData = {
-      description,
-      rating: Number(rating),
-      user_id: Number(userId),
-      product_id: Number(productId)
-    };
-    fetch("/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-    .then((r) => {
-      if (r.ok) {
-        r.json().then((review) => {
-          setDescription("");
-          setRating("");
-          setUserId("");
-          setProductId("");
-          handleAddReview(review);
-        });
-      }
-    })
-  }
+function handleSubmit(e) {
+  e.preventDefault()
+  fetch("/reviews", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      description: description,
+      rating: rating,
+      user_id: userId,
+      product_id: productId
+    }),
+  })
+  .then((r) => {
+      r.json().then((newReview) => {
+        setReviews((reviews) => [...reviews, newReview]);
+
+      });
+  })
+}
+
 
   return (
     <>
       <br></br>
-      {reviewItems}
+      {reviewItems} 
       <CssBaseline />
       <Container maxWidth="sm">
         <Card sx={{ maxWidth: 818 }}>

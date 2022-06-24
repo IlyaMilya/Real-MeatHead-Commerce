@@ -12,18 +12,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
+import {Link} from "react-router-dom";
 
 
-function Review({review}) {
+function Review({review, handleDelete}) {
+    console.log(review.id)
 
     const [value, setValue] = React.useState();
-
-    // function handleDeleteClick() {
-    //     fetch(`/reviews/${id}`, )
-    //         method: "DELETE",
-    //     })
-
-    // }
+    const [reviews, setReviews] = React.useState([])
 
   return (
     <>
@@ -48,9 +44,11 @@ function Review({review}) {
                 </CardContent>
                 <CardActions disableSpacing>
                     <IconButton aria-label="edit comment">
-                        <EditIcon />
+                        <Link to={`/reviews/${review.id}`}>
+                            <EditIcon />
+                        </Link>
                     </IconButton>
-                    <IconButton aria-label="delete comment">
+                    <IconButton aria-label="delete comment" onClick={() => handleDelete(review.id)}>
                         <DeleteIcon />
                     </IconButton>
                 </CardActions>
@@ -61,5 +59,3 @@ function Review({review}) {
 }
 
 export default Review;
-
-// onClick={handleDeleteClick}
